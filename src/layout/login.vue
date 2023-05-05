@@ -1,0 +1,235 @@
+<template>
+    <div class="login">
+        <div class="logo">
+            <img src="../assets/login-logo.png" alt="">
+        </div>
+        <div class="desc">Welcome back</div>
+        <div class="callback" @click="$router.back()">&lt;</div>
+        <div class="form">
+            <van-form>
+                <div class="phone">
+                    <div class="phone-icon">
+                        <img src="../assets/login-phone.png" alt="">
+                    </div>
+                    <div class="phone-name">phone number</div>
+                </div>
+                <van-field class="sjh" v-model="phone" type="tel" name="phone" placeholder="Enter phone number"
+                    :rules="[{ required: true }]" />
+                <div class="code">
+                    <div class="code-icon">
+                        <img src="../assets/login-code.png" alt="">
+                    </div>
+                    <div class="code-name">verification code</div>
+                </div>
+                <van-field class="yzm" v-model="code" type="type" name="password" placeholder="Enter verification code"
+                    :rules="[{ required: true }]" />
+                <div class="xian">|</div>
+                <!-- otp -->
+                <div class="otp" @click="fasong" v-if="!isShow"> OTP</div>
+                <!-- 时间 -->
+                <div class="otp" v-else> {{ time }}s</div>
+                <div class="btn">Login</div>
+            </van-form>
+        </div>
+        <div class="bottom">
+            <div class="box"><van-checkbox v-model="checked" class="check"></van-checkbox></div>
+            <div class="bottom-desc">To proceed to the next step means that you agree to <span>&lt;Privacy
+                    Policy&gt;</span>and <span>&lt;Terms
+                    and Conditionn&gt;</span>.</div>
+        </div>
+    </div>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            isShow: false,
+            checked: false,
+            phone: '',
+            code: '',
+            time: ''
+        }
+    },
+    methods: {
+        //发送验证码
+        fasong() {
+            this.isShow = true
+            this.time = 60
+            let timer = setInterval(() => {
+                this.time--
+                if (this.time <= 0) {
+                    this.isShow = false
+                    clearInterval(timer)
+                }
+            }, 1000)
+        }
+    }
+}
+</script>
+<style lang="less">
+/deep/ input::placeholder {
+
+    color: #AECCA3 !important;
+}
+
+.login {
+    .callback {
+        position: fixed;
+        top: (20/@a);
+        left: (20/@a);
+        font-size: (40/@a);
+        color: #12BD6A;
+    }
+
+    .form {
+        position: relative;
+        width: (288/@a);
+        height: (300/@a);
+        background: #FDFEFF;
+        border: (1/@a) solid #96B8A7;
+        box-shadow: 0px (4/@a) (4/@a) rgba(0, 0, 0, 0.05);
+        border-radius: (22/@a);
+        margin-top: (20/@a);
+        margin-left: (40/@a);
+        padding: (36/@a) (20/@a);
+
+        .xian {
+            position: absolute;
+            top: 158px;
+            right: 75px;
+            color: #1CC26F;
+        }
+
+        .otp {
+            position: absolute;
+            top: 160px;
+            right: 30px;
+            color: #1CC26F;
+        }
+
+        .btn {
+            width: (247/@a);
+            height: (40/@a);
+            background: linear-gradient(180deg, #32CE7A 0%, #12BD6A 100%);
+            border-radius: (20/@a);
+            text-align: center;
+            line-height: (40/@a);
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            font-size: (18/@a);
+            color: #fff;
+        }
+
+        .sjh {
+            width: (247/@a);
+            height: (42/@a);
+            background: #D1F1D3;
+            border-radius: (21/@a);
+            margin-bottom: (20/@a);
+            margin-top: (5/@a);
+
+            &::placeholder {
+                color: #AECCA3;
+            }
+        }
+
+        .yzm {
+            width: (247/@a);
+            height: (42/@a);
+            background: #D1F1D3;
+            border-radius: (21/@a);
+            margin-bottom: (20/@a);
+            margin-top: (5/@a);
+        }
+
+        .code {
+            display: flex;
+            margin-bottom: (4/@a);
+
+            .code-icon {
+                width: (12/@a);
+                height: (16/@a);
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .code-name {
+                color: #4D8058;
+                margin-left: (8/@a);
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+                font-size: (14/@a);
+            }
+        }
+
+        .phone {
+            display: flex;
+            margin-bottom: (4/@a);
+
+            .phone-icon {
+                width: (12/@a);
+                height: (18/@a);
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .phone-name {
+                color: #4D8058;
+                margin-left: (8/@a);
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+                font-size: (14/@a);
+            }
+        }
+    }
+
+    .bottom {
+        display: flex;
+        margin-top: (53/@a);
+        font-family: 'Roboto';
+        margin-left: (20/@a);
+        font-style: normal;
+        font-weight: 400;
+        font-size: (12/@a);
+
+        .box {
+            margin-top: (10/@a);
+        }
+
+        .bottom-desc {
+            margin-left: (10/@a);
+
+            span {
+                color: #17924F;
+            }
+        }
+    }
+
+    .desc {
+        margin-top: (10/@a);
+        margin-left: (124/@a);
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: (16/@a);
+    }
+
+    .logo {
+        width: (70/@a);
+        height: (70/@a);
+        margin-top: (38/@a);
+        margin-left: (145/@a);
+
+        img {
+            width: 100%;
+        }
+    }
+}
+</style>
