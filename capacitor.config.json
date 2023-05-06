@@ -1,0 +1,7 @@
+{
+    "appId": "com.money.money.box.loan.rupee.cash",
+    "appName": "Money Box",
+    "webDir": "dist",
+    "cordova": {},
+    "plugins": {}
+}

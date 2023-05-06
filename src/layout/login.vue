@@ -27,12 +27,12 @@
                 <!-- otp -->
                 <div class="otp" @click="fasong" v-if="!isShow"> OTP</div>
                 <!-- 时间 -->
-                <div class="otp" v-else> {{ time }}s</div>
-                <div class="btn">Login</div>
+                <div class="yanzhengma" v-else> {{ time }}s</div>
+                <div class="btn" @click="doLogin">Login</div>
             </van-form>
         </div>
         <div class="bottom">
-            <div class="box"><van-checkbox v-model="checked" class="check"></van-checkbox></div>
+            <div class="box"><van-checkbox v-model="checked" class="check" checked-color="#237B3C"></van-checkbox></div>
             <div class="bottom-desc">To proceed to the next step means that you agree to <span>&lt;Privacy
                     Policy&gt;</span>and <span>&lt;Terms
                     and Conditionn&gt;</span>.</div>
@@ -40,6 +40,9 @@
     </div>
 </template>
 <script>
+import { FKJYHLEHgetyzmApi, FKJYHLEHgetLoginApi } from "@/api";
+import { add, unt } from "../utils/key.js";
+import { Toast } from "vant";
 export default {
     data() {
         return {
@@ -51,17 +54,55 @@ export default {
         }
     },
     methods: {
+        //登录
+        async doLogin() {
+            if (!this.phone && !this.code) {
+                return Toast('Please fill in the mobile phone number or verification code')
+            }
+            if (!this.checked) {
+                return Toast('Please check the agreement')
+
+            }
+            const f = {
+                phone: this.phone,
+                phoneCode: '+91',
+                code: this.code
+            }
+            const r = await FKJYHLEHgetLoginApi(add(f))
+            console.log(r)
+            if (!r.status) {
+                //登录成功
+                this.$store.commit('setUserInfo', r.user)
+                this.$router.push('/home')
+                this.$store.commit('changeLogin', true)
+            }
+
+        },
         //发送验证码
-        fasong() {
-            this.isShow = true
-            this.time = 60
-            let timer = setInterval(() => {
-                this.time--
-                if (this.time <= 0) {
-                    this.isShow = false
-                    clearInterval(timer)
+        async fasong() {
+            if (!this.phone) {
+                Toast('请输入手机号')
+                return
+            }
+            const f = {
+                model: {
+                    phone: this.phone,
+                    phoneCode: '+91'
                 }
-            }, 1000)
+            }
+            const r = await FKJYHLEHgetyzmApi(add(f))
+            console.log(r)
+            if (r.status === 0) {
+                this.isShow = true
+                this.time = 60
+                let timer = setInterval(() => {
+                    this.time--
+                    if (this.time <= 0) {
+                        this.isShow = false
+                        clearInterval(timer)
+                    }
+                }, 1000)
+            }
         }
     }
 }
@@ -105,6 +146,13 @@ export default {
             top: 160px;
             right: 30px;
             color: #1CC26F;
+        }
+
+        .yanzhengma {
+            position: absolute;
+            top: 160px;
+            right: 30px;
+            color: #A6A6A6;
         }
 
         .btn {

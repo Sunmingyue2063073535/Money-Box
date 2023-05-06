@@ -1,6 +1,6 @@
 <template>
     <div class="me">
-        <div class="me-top" v-if="isLogin">
+        <div class="me-top" v-if="$store.state.isLogin">
             <div class="user-icon">
                 <img src="@/assets/user-icon-a.png" alt="">
             </div>
@@ -69,8 +69,8 @@
             </li>
         </ul>
         <!-- 按钮 -->
-        <div class="login" v-if="!isLogin" @click="$router.push('/login')">Login</div>
-        <div class="login" v-else>Log out</div>
+        <div class="login" v-if="!$store.state.isLogin" @click="$router.push('/login')">Login</div>
+        <div class="login" v-else @click="doLogout">Log out</div>
         <!-- 底部导航 -->
         <div class="nav">
             <div class="nav-home" @click="$router.push('/home')">
@@ -83,12 +83,28 @@
     </div>
 </template>
 <script>
+import { Dialog } from 'vant'
 export default {
     data() {
         return {
             isLogin: false
         }
     },
+    methods: {
+        //退出登录
+        doLogout() {
+            Dialog.confirm({
+                message: 'Are you sure you want to quit?',
+                confirmButtonText: 'Confirm',
+                cancelButtonText: 'Cancel'
+            }).then(() => {
+                this.$store.commit('clearUserInfo')
+                this.$store.commit('changeLogin', false)
+                this.$router.push('/home')
+                Toast('Exit Successfully')
+            });
+        }
+    }
 }
 </script>
 <style lang="less">

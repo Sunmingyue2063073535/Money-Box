@@ -9,7 +9,7 @@
             <img src="@/assets/home-loan.png" alt="">
         </div>
         <!-- 按钮 -->
-        <div class="btn">Start Apply</div>
+        <div class="btn" @click="doApply">Start Apply</div>
         <div class="bottom">
             <img src="@/assets/home-bottom.png" alt="">
         </div>
@@ -32,8 +32,13 @@
     </div>
 </template>
 <script>
+import toNext from '../Form/toNext.js'
 export default {
-
+    methods: {
+        async doApply() {
+            toNext()
+        }
+    }
 }
 </script>
 <style lang="less">
