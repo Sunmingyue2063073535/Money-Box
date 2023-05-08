@@ -13,7 +13,7 @@ export default async function () {
         //跳转OCR
         return;
     } else if (ele.formType == "ALIVE") {
-        router.push('/huoti')
+        router.push('/alive')
         return
     } else if (ele.formType == "BASIC") {
         router.push('/baseForm')

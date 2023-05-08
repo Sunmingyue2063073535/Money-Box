@@ -31,19 +31,19 @@ export function FKJYHLEHuploadUserInfoAPI(a) {
 }
 //获取工作岗位信息
 export function FKJYHLEHgetJobInfomation() {
-    return c.post('/cardiometer/visually-invariant')
+    return c.post('/astringer_appeaser_saccharate/pulaski/caulome_claytonia')
 }
 //获取地址信息
 export function FKJYHLEHgetAddressAPI(a) {
-    return c.post('/septuagint-procaryote-bourg/hypnopaedia/hyson', a)
+    return c.post('/cockatoo_calzone_liturgician/two_epicondyle_ellachick', a)
 }
 //提交表单
 export function FKJYHLEHuploadbaseform(a) {
-    return c.post('/idempotence-aerolitics/industrialise-decoloration-carefulness/sacahuiste-vamose', a);
+    return c.post('/palliatory_americanisation_defamatory/psychoeducational_calyx_supercurrent/enduro', a);
 }
 //获取指定表单
 export function FKJYHLEHgetdefaultform(a) {
-    return c.post('/megillah-hummel-bosshead/observance-dextrorotatory/subsection-avaunt-connubially', a)
+    return c.post('/exhilaration_peristaltic_hyperhepatia/junker', a)
 }
 
 
@@ -77,27 +77,27 @@ export function FKJYHLEHgetdefaultform(a) {
 
 //活体校验
 export function FKJYHLEHhuotijiaoyanAPI(a) {
-    return c.post('/iontophoresis/plentitude-thivel', a)
+    return c.post('/scholiast/steersman', a)
 }
 //获取产品列表
 export function FKJYHLEHgetOrderListAPI(a) {
-    return c.post('/theretofore/mensuration-rhinologist/alterability-trockenbeerenauslese-homograph', a)
+    return c.post('/rappini_grysbok_nautophone/solonetz', a)
 }
 //产品手续费试算
 export function FKJYHLEHgetOrderPayAPI(a) {
-    return c.post('/duskily-whiggism/amalgamate-amends-tooler/lowestoft-agronomist-mescal', a)
+    return c.post('/predetermine_bushtailed_bird/selfheal_nachus_nocardia/keddah_pugwash', a)
 }
 //贷款申请
 export function FKJYHLEHdkUploadAPI(a) {
-    return c.post('/shanachy/ephebeion', a)
+    return c.post('/cenesthesia_plumper_cutlery/doffer_sokotra_gimmicky', a)
 }
 //订单列表
 export function FKJYHLEHgetDingDanListAPI(a) {
-    return c.post('/hypercryalgesia-procuress/selenocentric-heterosis', a)
+    return c.post('/prosaism_unprovoked/squabble_scenic/hindsight', a)
 }
 //订单还款计划
 export function FKJYHLEHdingdanhuankuanAPI(a) {
-    return c.post('/binche-semiarid/axone/preoral', a)
+    return c.post('/benioff/eatage', a)
 }
 //获取订单还款方式
 export function FKJYHLEHgetOrderPayType(a) {

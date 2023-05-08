@@ -74,7 +74,7 @@ export default {
             console.log(this.f, '提交用户信息的表单')
             const res = await FKJYHLEHuploadUserInfoAPI(add(this.f))
             console.log(res, '上传证件结果')
-            // isNext()
+            toNext()
         },
         //时间戳转成年月日
         formatDate(timestamp) {

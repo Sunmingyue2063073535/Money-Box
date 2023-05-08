@@ -18,7 +18,7 @@
         <!-- 列表 -->
         <ul class="list">
             <!-- My Order -->
-            <li>
+            <li @click="$router.push('/myloan')">
                 <div class="list-icon">
                     <img src="@/assets/list-wallet.png" alt="">
                 </div>

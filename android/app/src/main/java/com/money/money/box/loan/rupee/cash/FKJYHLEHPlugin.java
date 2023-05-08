@@ -56,7 +56,7 @@ public class FKJYHLEHPlugin extends com.getcapacitor.Plugin {
             case "FKJYHLEHemail" :
                 try {
                     Intent data=new Intent(Intent.ACTION_SENDTO);
-                    data.setData(Uri.parse("mailto:violin.customer@hotmail.com"));
+                    data.setData(Uri.parse("boxmoneycus@hotmail.com"));
                     getActivity().startActivity(data);
                 } catch (Exception e) {
 

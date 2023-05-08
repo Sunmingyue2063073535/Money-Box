@@ -18,11 +18,11 @@ export default new Vuex.Store({
         //ocr照片的url
         ocrUrl: {},
         //选中贷款的id
-        productId: '',
+        PID: '',
         //订单id
-        orderId: '',
+        OID: '',
         //还款信息
-        orderInfo: {},
+        OInfo: {},
         isupload: {}
     },
     getters: {},
@@ -32,16 +32,16 @@ export default new Vuex.Store({
             state.isupload = payload
         },
         //设置还款产品信息
-        setOrderInfo(state, payload) {
-            state.orderInfo = payload
+        setOInfo(state, payload) {
+            state.OInfo = payload
         },
         //设置订单id
-        setOrderId(state, payload) {
-            state.orderId = payload
+        setOID(state, payload) {
+            state.OID = payload
         },
         //设置贷款的id
-        setProductId(state, payload) {
-            state.productId = payload
+        setPID(state, payload) {
+            state.PID = payload
         },
         //设置ocr图片
         setOCRUrl(state, payload) {
