@@ -1,6 +1,6 @@
 <template>
     <div class="TopDesc">
-        <div class="callback" @click="$router.back()">
+        <div class="callback" @click="$router.push('/home')">
             <img src="../assets/callback.png" alt="">
         </div>
         <div class="desc">{{ desc }}</div>

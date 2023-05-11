@@ -3,7 +3,7 @@
         <TopDesc desc="Product List"></TopDesc>
         <div class="top">
             <div class="top-left">My Loan History</div>
-            <div class="top-right" @click="$router.push('/myloan')">View</div>
+            <div class="top-right" @click="doView">View</div>
         </div>
         <!-- 产品列表 -->
         <ul class="list">
@@ -65,6 +65,10 @@ export default {
         }
     },
     methods: {
+        doView() {
+            this.$store.commit('changeCount', 0);
+            this.$router.push('/myloan')
+        },
         //点击提交
         async doClick() {
             const f = {

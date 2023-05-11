@@ -1,5 +1,8 @@
 <template>
     <div class="me">
+        <div class="success" @click="doStatus(1)"></div>
+        <div class="overdue" @click="doStatus(2)"></div>
+        <div class="finish" @click="doStatus(3)"></div>
         <div class="me-top" v-if="$store.state.isLogin">
             <div class="user-icon">
                 <img src="@/assets/user-icon-a.png" alt="">
@@ -18,7 +21,7 @@
         <!-- 列表 -->
         <ul class="list">
             <!-- My Order -->
-            <li @click="$router.push('/myloan')">
+            <li @click="doLoan">
                 <div class="list-icon">
                     <img src="@/assets/list-wallet.png" alt="">
                 </div>
@@ -28,7 +31,7 @@
                 </div>
             </li>
             <!-- 隐私协议 -->
-            <li>
+            <li @click="isPrivacy = true">
                 <div class="list-icon">
                     <img src="@/assets/list-yinsi.png" alt="">
                 </div>
@@ -38,7 +41,7 @@
                 </div>
             </li>
             <!-- Terms -->
-            <li>
+            <li @click="isTerm = true">
                 <div class="list-icon">
                     <img src="@/assets/list-terms.png" alt="">
                 </div>
@@ -48,7 +51,7 @@
                 </div>
             </li>
             <!-- Loan Product -->
-            <li>
+            <li @click="doProduct">
                 <div class="list-icon">
                     <img src="@/assets/list-house.png" alt="">
                 </div>
@@ -58,7 +61,7 @@
                 </div>
             </li>
             <!-- 邮箱 -->
-            <li>
+            <li @click="doEmail">
                 <div class="list-icon">
                     <img src="@/assets/list-youxiang.png" alt="">
                 </div>
@@ -80,17 +83,37 @@
                 <img src="@/assets/me-a.png" alt="">
             </div>
         </div>
+        <!-- 协议弹窗 -->
+        <van-dialog v-model="isPrivacy" :show-cancel-button="false" :show-confirm-button="false">
+            <Privacy @privacyClose="isPrivacy = false"></Privacy>
+        </van-dialog>
+        <van-dialog v-model="isTerm" :show-cancel-button="false" :show-confirm-button="false">
+            <Term @TermClose="isTerm = false"></Term>
+        </van-dialog>
     </div>
 </template>
 <script>
-import { Dialog } from 'vant'
+import { Dialog, Toast } from 'vant'
+import Privacy from './Privacy'
+import Term from './Term'
+import { getEmail, threeToken } from '../../android/android.js'
 export default {
+    components: { Privacy, Term },
     data() {
         return {
-            isLogin: false
+            isLogin: false,
+            isPrivacy: false,
+            isTerm: false
         }
     },
     methods: {
+        //邮箱
+        async doEmail() {
+
+            var link = "mailto:" + 'boxmoneycus@hotmail.com';
+            window.location.href = link;
+            getEmail()
+        },
         //退出登录
         doLogout() {
             Dialog.confirm({
@@ -103,7 +126,31 @@ export default {
                 this.$router.push('/home')
                 Toast('Exit Successfully')
             });
-        }
+        },
+        doLoan() {
+            if (!this.$store.state.isLogin) {
+                this.$router.push('/login')
+                return Toast('please log in first')
+            }
+            this.$store.commit('changeCount', 0)
+            this.$router.push('/myloan')
+        },
+        doProduct() {
+            if (!this.$store.state.isLogin) {
+                this.$router.push('/login')
+                return Toast('please log in first')
+            }
+            this.$router.push('/ProductList')
+        },
+
+        doStatus(status) {
+            if (!this.$store.state.isLogin) {
+                this.$router.push('/login')
+                return Toast('please log in first')
+            }
+            this.$store.commit('changeCount', status)
+            this.$router.push('/myloan')
+        },
     }
 }
 </script>
@@ -111,6 +158,33 @@ export default {
 .me {
     position: relative;
     padding-bottom: (60/@a);
+
+    .success {
+        position: absolute;
+        z-index: 999;
+        top: (170/@a);
+        left: (50/@a);
+        width: (70/@a);
+        height: (75/@a);
+    }
+
+    .overdue {
+        position: absolute;
+        z-index: 999;
+        top: (170/@a);
+        left: (150/@a);
+        width: (70/@a);
+        height: (75/@a);
+    }
+
+    .finish {
+        position: absolute;
+        z-index: 999;
+        top: (170/@a);
+        left: (250/@a);
+        width: (70/@a);
+        height: (75/@a);
+    }
 
     .login {
         position: absolute;

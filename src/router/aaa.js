@@ -8,8 +8,14 @@ import alive from '../layout/Form/alive.vue'
 import productList from '../layout/Product/productList.vue'
 import PettyCash from "@/layout/Pay/PettyCash.vue";
 import PayType from '../layout/Pay/PayType.vue'
+import Rollover from "@/layout/Pay/Rollover.vue";
+import FanKuiList from "../layout/kefu/FanKuiList.vue";
+import FanKuiForm from '../layout/kefu/FankuiForm.vue'
+import xieyi from '../layout/xieyi/xieyi.vue'
+import beforeqx from '../layout/before/beforeqx.vue'
+import beforeys from '../layout/before/beforeys.vue'
 const routes = [
-    { path: '/', component: login },
+    { path: '/', component: xieyi },
     { path: '/login', component: login },
     { path: '/home', component: home },
     { path: '/me', component: me },
@@ -20,6 +26,11 @@ const routes = [
     { path: '/productList', component: productList },
     { path: '/PettyCash', component: PettyCash },
     { path: '/PayType', component: PayType },
+    { path: '/Rollover', component: Rollover },
+    { path: '/FanKuiList', component: FanKuiList },
+    { path: '/FanKuiForm', component: FanKuiForm },
+    { path: '/beforeqx', component: beforeqx },
+    { path: '/beforeys', component: beforeys },
 
 ]
 export default routes

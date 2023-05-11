@@ -4,7 +4,7 @@
         <div class="box">
             <div class="top">
                 <div class="title">Repayment amount</div>
-                <div class="amount">₹45450</div>
+                <div class="amount">₹{{ this.$store.state.OInfo.actualAmount }}</div>
             </div>
             <div class="content">
                 <div class="desc">Choose your payment mode:</div>
@@ -14,14 +14,55 @@
                     </div>
                     <div class="text">Please Choose</div>
                 </div>
-                <div class="payTypeEle">UPI</div>
+                <div class="payTypeEle" v-for="item in list" @click="doPay(item)">{{ item.methodName }}</div>
             </div>
         </div>
         <Copy> </Copy>
     </div>
 </template>
 <script>
-export default {}
+import { FKJYHLEHgetOrderPayType, FKJYHLEHgetOrderLinkAPI } from '../../api'
+import { add } from "../../utils/key.js";
+export default {
+    data() {
+        return {
+            list: [],
+            item: {},//选中的还款方式
+            payInfo: {}
+        }
+    },
+    methods: {
+        //还款
+        async doPay(item) {
+            this.item = item
+            const f = {
+                model: {
+                    orderId: this.$store.state.OID,
+                    repayMethod: this.item.repayMethod,
+                    methodCode: this.item.methodCode,
+                    repayType: "IMMEDIATE"
+                }
+            }
+            const r = await FKJYHLEHgetOrderLinkAPI(add(f))
+            const href = r.model.repayCode
+            setTimeout(() => {
+                window.location.href = href
+            }, 500);
+        },
+        //获取订单还款方式
+        async getOrderPayType() {
+            const f = {
+                model: { orderId: this.$store.state.OID }
+            }
+            const r = await FKJYHLEHgetOrderPayType(add(f))
+            console.log(r)
+            this.list = r.model.methods
+        }
+    },
+    created() {
+        this.getOrderPayType()
+    }
+}
 </script>
 <style lang="less" scoped>
 .payType {
@@ -29,10 +70,10 @@ export default {}
 
     .box {
         width: (345/@a);
-        height: (210/@a);
         background-color: #f5f5f5;
         margin-left: (15/@a);
         border-radius: (15/@a);
+        padding-bottom: (20/@a);
 
         .content {
             padding-top: (5/@a);

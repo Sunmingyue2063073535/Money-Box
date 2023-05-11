@@ -2,6 +2,8 @@
 <resources>
     <string name="app_name">Money Box</string>
     <string name="title_activity_main">Money Box</string>
+    <string name="facebook_app_id">724578119354133</string>
+    <string name="fb_login_protocol_scheme">fb724578119354133</string>
     <string name="package_name">com.money.money.box.loan.rupee.cash</string>
     <string name="custom_url_scheme">com.money.money.box.loan.rupee.cash</string>
 </resources>

@@ -20,14 +20,16 @@
                         <img src="../assets/login-code.png" alt="">
                     </div>
                     <div class="code-name">verification code</div>
+                    <!-- otp -->
+                    <div class="otp" @click="fasong" v-if="!isShow"> OTP</div>
+                    <!-- 时间 -->
+                    <div class="yanzhengma" v-else> {{ time }}s</div>
+                    <div class="xian">|</div>
                 </div>
                 <van-field class="yzm" v-model="code" type="type" name="password" placeholder="Enter verification code"
                     :rules="[{ required: true }]" />
-                <div class="xian">|</div>
-                <!-- otp -->
-                <div class="otp" @click="fasong" v-if="!isShow"> OTP</div>
-                <!-- 时间 -->
-                <div class="yanzhengma" v-else> {{ time }}s</div>
+
+
                 <div class="btn" @click="doLogin">Login</div>
             </van-form>
         </div>
@@ -134,26 +136,9 @@ export default {
         margin-left: (40/@a);
         padding: (36/@a) (20/@a);
 
-        .xian {
-            position: absolute;
-            top: 158px;
-            right: 75px;
-            color: #1CC26F;
-        }
 
-        .otp {
-            position: absolute;
-            top: 160px;
-            right: 30px;
-            color: #1CC26F;
-        }
 
-        .yanzhengma {
-            position: absolute;
-            top: 160px;
-            right: 30px;
-            color: #A6A6A6;
-        }
+
 
         .btn {
             width: (247/@a);
@@ -192,6 +177,7 @@ export default {
         }
 
         .code {
+            position: relative;
             display: flex;
             margin-bottom: (4/@a);
 
@@ -211,6 +197,30 @@ export default {
                 font-style: normal;
                 font-weight: 400;
                 font-size: (14/@a);
+            }
+
+            .otp {
+                position: absolute;
+                top: (36/@a);
+                right: (15/@a);
+                z-index: 999;
+                color: #1CC26F;
+            }
+
+            .yanzhengma {
+                position: absolute;
+                top: (36/@a);
+                right: (15/@a);
+                z-index: 999;
+                color: #A6A6A6;
+            }
+
+            .xian {
+                position: absolute;
+                top: (35/@a);
+                right: (60/@a);
+                z-index: 999;
+                color: #1CC26F;
             }
         }
 

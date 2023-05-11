@@ -3,11 +3,11 @@
         <TopDesc desc="Petty Cash"></TopDesc>
         <div class="desc">Get more amount after instant payment</div>
         <div class="info">
-            <div class="kefu">
+            <div class="kefu" @click="$router.push('/FanKuiList')">
                 <img src="../../assets/kefu.png" alt="">
             </div>
             <div class="title">Repayment amount</div>
-            <div class="amount">₹45450</div>
+            <div class="amount">₹{{ OInfo.actualAmount }}</div>
             <div class="list">
                 <ul class="key">
                     <li>Loan note number</li>
@@ -31,7 +31,7 @@
                 </ul>
             </div>
             <div class="bottom">
-                <div class="rollover">Rollover</div>
+                <div class="rollover" @click="$router.push('/Rollover')">Rollover</div>
                 <div class="repayment" @click="$router.push('/PayType')">Full Repayment</div>
             </div>
         </div>

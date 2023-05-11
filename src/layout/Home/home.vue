@@ -33,10 +33,15 @@
 </template>
 <script>
 import toNext from '../Form/toNext.js'
+import { Toast } from 'vant'
 export default {
     methods: {
         async doApply() {
-            toNext()
+            if (!this.$store.state.isLogin) {
+                this.$router.push('/login')
+                return c('please log in first')
+            }
+            this.$router.push('/beforeys')
         }
     }
 }

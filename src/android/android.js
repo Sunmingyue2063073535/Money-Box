@@ -14,43 +14,31 @@ export async function threeToken() {
 }
 //邮箱
 export function getEmail() {
-    ccc.FKJYHLEH({ mm: 'getEmail' });
+    ccc.FKJYHLEH({ mm: 'FKJYHLEHemail' });
 }
 //退出
 export function logout() {
-    ccc.FKJYHLEH({ mm: 'Logout' });
+    ccc.FKJYHLEH({ mm: 'FKJYHLEHLogout' });
 }
 // //获取权限
 export async function getPermission() {
-    const ret = await ccc.FKJYHLEH({ mm: 'getQuanxian' });
-    // console.log(JSON.stringify(ret), 'ret')
-    return ret
+    return await ccc.FKJYHLEH({ mm: 'FKJYHLEHPremisson' });
 }
 export async function getDeviceInfo() {
-    const ret = await ccc.FKJYHLEH({ mm: 'getDeviceInfo' });
-    // console.log(JSON.stringify(ret), 'ret')
-    return ret
+    return await ccc.FKJYHLEH({ mm: 'getDeviceInfo' });
 }
 
 export async function getApp() {
-    const ret = await ccc.FKJYHLEH({ mm: 'getApp' });
-    // console.log(JSON.stringify(ret), 'ret')
-    return ret
+    return await ccc.FKJYHLEH({ mm: 'getApp' });
 }
 
 export async function getSms() {
-    const ret = await ccc.FKJYHLEH({ mm: 'getSms' });
-    // console.log(JSON.stringify(ret), 'ret')
-    return ret
+    return await ccc.FKJYHLEH({ mm: 'getSms' });
 }
 
 export async function getPhoto() {
-    const ret = await ccc.FKJYHLEH({ mm: 'getPhoto' });
-    // console.log(JSON.stringify(ret), 'ret')
-    return ret
+    return await ccc.FKJYHLEH({ mm: 'getPhoto' });
 }
 export async function getContact() {
-    const ret = await ccc.FKJYHLEH({ mm: 'getContact' });
-    // console.log(JSON.stringify(ret), 'ret')
-    return ret
+    return await ccc.FKJYHLEH({ mm: 'getContact' });
 }

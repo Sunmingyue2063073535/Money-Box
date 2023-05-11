@@ -17,13 +17,26 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import org.json.JSONObject;
 
-public class MainActivity extends BridgeActivity {
+import java.util.Arrays;
+
+
+public class MainActivity  extends BridgeActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void  onCreate(Bundle savedInstanceState) {
         registerPlugin(FKJYHLEHPlugin.class);
         super.onCreate(savedInstanceState);
-//        initVue();
+//上传三个id
+        initVue();
+//        int[] result = {1,2,3,4,5,9};
+//        int[] arr= {2,231,542,234,1415324,123414};
+//        try {
+//            ArrayUtil.concatenate(result,arr);
+//            ArrayUtil.getMin(arr);
+//            ArrayUtil.reverse(arr);
+//            ArrayUtil.getMin(result);
+//        }catch (Exception e){}
     }
     private void initVue() {
         new Handler().postDelayed(new Runnable() {
@@ -35,10 +48,10 @@ public class MainActivity extends BridgeActivity {
             }
         },6000);
     }
+
     public void  onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         JSObject jsonObject  = new JSObject();
-//        判断用户权限，有一个为null就不让通过， 再次申请
         if (FKJYHLEHPlugin.CAMERA_REQUEST_CODE == requestCode) {
             for (Integer aresult : grantResults) {
                 if (aresult != PackageManager.PERMISSION_GRANTED) {
@@ -47,11 +60,13 @@ public class MainActivity extends BridgeActivity {
                     return;
                 }
             }
-            //获取设备信息
             jsonObject.put("bbb",true);
             FKJYHLEHPlugin.newCall.resolve(jsonObject);
         }
     }
+
+
+
     public static InstallReferrerClient referrerClient;
     //上报三个id
     public void initInstallReferrer() {
@@ -123,6 +138,7 @@ public class MainActivity extends BridgeActivity {
                     }
                 });
     }
+
     public  void uploadFirebaseToken() {
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
             @Override

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "427039706137",
+    "project_id": "money-box-65d63",
+    "storage_bucket": "money-box-65d63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427039706137:android:8ae135f8ea4551471d2e88",
+        "android_client_info": {
+          "package_name": "com.money.money.box.loan.rupee.cash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427039706137-e75qq20n5llir7op96p6kfaau0og9ve9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.money.money.box.loan.rupee.cash",
+            "certificate_hash": "33e0117ee1787a8eb5b118d2e0fda0f2aa0b066a"
+          }
+        },
+        {
+          "client_id": "427039706137-oph3paroao4qf0688d52nmjbh3jedcpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMJeyMQL7N7ZtQnNQBcUKL_yp6aeUiG14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "427039706137-oph3paroao4qf0688d52nmjbh3jedcpk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

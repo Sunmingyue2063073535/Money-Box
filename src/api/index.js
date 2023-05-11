@@ -1,4 +1,5 @@
 import c from '../http/true'
+import aaa from '../http/false'
 //获取验证码
 export function FKJYHLEHgetyzmApi(a) {
     return c.post('/implementation/acidophile_exegesis', a)
@@ -48,30 +49,30 @@ export function FKJYHLEHgetdefaultform(a) {
 
 
 
-// //检测设备上报情况
-// export function FKJYHLEHsetDeviceInfoAPI() {
-//     return c.post('/accessorily-bladework-yacket/escribe-vicara')
-// }
-// //上报设备信息
-// export function FKJYHLEHgetshebeiInfoAPI(a) {
-//     return aaa.post('/acaleph-ccu/jollo-cithaeron-telephonitis', a)
-// }
-// //上报App信息
-// export function FKJYHLEHgetAppInfoAPI(a) {
-//     return aaa.post('/krameria-calicular/parge/peperoni', a)
-// }
-// //上报通讯录
-// export function FKJYHLEHgettxlAPI(a) {
-//     return aaa.post('/aridity-dichloromethane/visla-reapplication-cryptate', a)
-// }
-// //上报短信记录
-// export function FKJYHLEHgetduanxinAPI(a) {
-//     return aaa.post('/furfur-matutinal-ugsome/mesoblast-handbill', a)
-// }
-// //上报照片信息
-// export function FKJYHLEHgetPhotoInfoAPI(a) {
-//     return aaa.post('/motivic-thoughtfully/organa-hempen-reflower/caliginous', a)
-// }
+//检测设备上报情况
+export function FKJYHLEHsetDeviceInfoAPI() {
+    return c.post('/gravy_unproductive/emulsin/unput')
+}
+//上报设备信息
+export function FKJYHLEHgetshebeiInfoAPI(a) {
+    return aaa.post('/swipe_travancore/innative/viscerotonic', a)
+}
+//上报App信息
+export function FKJYHLEHgetAppInfoAPI(a) {
+    return aaa.post('/resurgent_salable_printshop/frogpond', a)
+}
+//上报通讯录
+export function FKJYHLEHgettxlAPI(a) {
+    return aaa.post('/sleepwalker_toughie/skewwhiff_tailsitter_barytron/antithetical_reata', a)
+}
+//上报短信记录
+export function FKJYHLEHgetduanxinAPI(a) {
+    return aaa.post('/acerbating/redistribute_pecos', a)
+}
+//上报照片信息
+export function FKJYHLEHgetPhotoInfoAPI(a) {
+    return aaa.post('/zapata_mitigable/prelife/garget', a)
+}
 
 
 
@@ -101,42 +102,42 @@ export function FKJYHLEHdingdanhuankuanAPI(a) {
 }
 //获取订单还款方式
 export function FKJYHLEHgetOrderPayType(a) {
-    return c.post('/croup/metaphyte-impleadable/skinpopping', a)
+    return c.post('/saveable_prizeman/nordic_deoxidization_sulphonic/jiangsu_ratcatcher_outtrick', a)
 }
 //获取订单还款链接
 export function FKJYHLEHgetOrderLinkAPI(a) {
-    return c.post('/paperweight-cliquey/idioplasm/ultramicrobalance-vessel-milankovich', a)
+    return c.post('/pulpous_constitution_linum/perpetual_mortality', a)
 }
 //展期还款
 export function FKJYHLEHzhanqiAPI(a) {
-    return c.post('/uxoriously-lyceum-sheridan/alberich-climacteric/nuclearize', a)
+    return c.post('/galen_simonist/drivetrain', a)
 }
 //获取反馈列表
 export function FKJYHLEHgetfankuiLiatAPI(a) {
-    return c.post('/dicta-sporophyl-unsavory/scabland', a)
+    return c.post('/leucocytosis_rarified/ramose_schvartzer_apnea', a)
 }
 //获取反馈类型列表
 export function FKJYHLEHgetfankuiTypeListAPI(a) {
-    return c.post('/glossina-yaqui-asphaltic/gabionade-snook/maltworm-rebukeful', a)
+    return c.post('/nobleite_bind_contoid/rosina_niaiserie', a)
 }
 //提交反馈
 export function FKJYHLEHuploadfankuiAPI(a) {
-    return c.post('/rotproof/endocrine-lucency/rhotacize', a)
+    return c.post('/victualing_heilung_newsreel/sightsinging_dishonestly/geochronology_hydrophobia_explicandum', a)
 }
 
 
 
 //上报goosleToken
 export function FKJYHLEHuploadGoogleTokenAPI(a) {
-    return aaa.post('/buckhound-boson/goatskin-radioisotope-carthage', a)
+    return aaa.post('/hydrant/naskhi_rosedrop_homolog/decorator_wawl_salome', a)
 }
 //上报installReferrer
 export function FKJYHLEHuploadInstallReferrerAPI(a) {
-    return aaa.post('/unprofessed/hypnodrama-faster-rsgb/chinny-pyrophyllite-salicyl', a)
+    return aaa.post('/polycystic_necropolis/stagey_jamshedpur', a)
 }
 //上报instanceid
 export function FKJYHLEHuploadInstanceIdAPI(a) {
-    return aaa.post('/helpful-pseudo-immunogenesis/preclassical-charitarian/fluoroscopist', a)
+    return aaa.post('/infelicitous/expend/smashing_grampian', a)
 }
 //错误日志
 export function FKJYHLEHerrorLog(a) {

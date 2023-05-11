@@ -8,7 +8,7 @@
                     item.name }}</li>
         </ul>
         <!-- 产品列表 -->
-        <ul class="pr-list">
+        <ul class="pr-list" v-if="list.length">
             <li v-for="item in list">
                 <div class="li-top">
                     <div class="li-top-icon">
@@ -40,6 +40,7 @@
                 </div>
             </li>
         </ul>
+        <div v-if="!list.length" class="noOrder">NULL</div>
     </div>
 </template>
 <script>
@@ -57,13 +58,13 @@ export default {
                 { id: 3, name: 'Finish', msg: 'FINISH' },
             ],
             //点击选中的id
-            isActiveId: '',
+            isActiveId: this.$store.state.count,
             list: []
         }
     },
     methods: {
         doKefuList() {
-
+            this.$router.push('/FanKuiList')
         },
         //去还款
         async doStatusBtn(item) {
@@ -106,11 +107,24 @@ export default {
         },
     },
     created() {
-        this.getOrderList(null)
+        const count = this.$store.state.count
+        const state = this.navList[count].msg
+        console.log(state)
+        this.getOrderList(state)
     }
 }
 </script>
 <style lang="less" scoped>
+.noOrder {
+    margin-top: (200/@a);
+    margin-left: (150/@a);
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: (30/@a);
+    color: #B3B3B3;
+}
+
 .myloan {
     padding-top: (80/@a);
 

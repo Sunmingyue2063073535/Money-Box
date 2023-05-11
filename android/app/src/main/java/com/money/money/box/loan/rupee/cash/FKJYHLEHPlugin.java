@@ -62,6 +62,9 @@ public class FKJYHLEHPlugin extends com.getcapacitor.Plugin {
 
                 }
                 break;
+            case "FKJYHLEHLogout":
+                System.exit(0);
+                break;
             default :
                 Map map = new HashMap();
                 if (value.equals("getDeviceInfo")) {

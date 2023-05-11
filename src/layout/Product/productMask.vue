@@ -48,6 +48,7 @@ export default {
             }
             console.log(f)
             const r = await FKJYHLEHdkUploadAPI(add(f))
+            this.$store.commit('changeCount', 0);
             this.$router.push('/myloan')
             console.log(r)
         }
