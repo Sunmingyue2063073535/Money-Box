@@ -73,8 +73,11 @@ export default {
     methods: {
         // 上传
         doContinue() {
-            this.isshow = true
-            console.log(this.user)
+            if (!this.isupload.sfzImg && !this.isupload.sfzhImg && !this.isupload.bankImg) {
+                Toast('Please upload documents')
+            } else {
+                this.isshow = true
+            }
         },
         //身份证钱
         uploadeSFZQian(event) {

@@ -9,7 +9,9 @@
 
 <script>
 export default {
-
+  created() {
+    this.$store.commit('hideLoading')
+  },
 }
 </script>
 <style lang="less" scoped>

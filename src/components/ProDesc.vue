@@ -1,6 +1,6 @@
 <template>
     <div class="TopDesc">
-        <div class="callback" @click="$router.go(-1)">&lt;</div>
+        <div class="callback" @click="$router.push('/home')">&lt;</div>
         <div class="desc">{{ desc }}</div>
         <!-- <div class="info" v-if="info">{{ info }}</div> -->
         <div class="info">{{ info }}</div>
@@ -47,7 +47,7 @@ export default {
         position: absolute;
         top: (10/@a);
         left: (10/@a);
-        font-size: (40/@a);
+        font-size: (30/@a);
         margin-left: (22/@a);
         color: #18c16d;
     }

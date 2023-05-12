@@ -3,19 +3,66 @@
         <div class="title">Max Loan Amount</div>
         <div class="amount">₹200,000</div>
         <div class="data">
-            <img src="@/assets/home-data.png" alt="">
+            <div class="data-left">
+                <div class="data-left-top">95~ 365 Day</div>
+                <div class="data-left-bottom">Loan period</div>
+            </div>
+            <div class="data-right">
+                <div class="data-left-top">0.05%(day)</div>
+                <div class="data-left-bottom">interest</div>
+            </div>
         </div>
         <div class="loan">
-            <img src="@/assets/home-loan.png" alt="">
+            <div class="t">Loan Example</div>
+            <div class="content">
+                <div class="c-left">
+                    <div class="c-amount">
+                        <div class="c-a-top">Loan Amount</div>
+                        <div class="c-a-bottom">₹50,000</div>
+                    </div>
+                    <div class="c-charged">
+                        <div class="c-b-top">interest charged</div>
+                        <div class="c-b-bottom">₹1,500</div>
+                    </div>
+                </div>
+                <div class="c-right">
+                    <div class="c-period">
+                        <div class="c-a-top">Loan period</div>
+                        <div class="c-a-bottom">365 days</div>
+                    </div>
+                    <div class="c-repayment">
+                        <div class="c-b-top">Total repayment</div>
+                        <div class="c-b-bottom">₹51,500</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- 按钮 -->
         <div class="btn" @click="doApply">Start Apply</div>
         <div class="bottom">
             <img src="@/assets/home-bottom.png" alt="">
         </div>
-        <div class="bottom-left">
-            <img src="@/assets/home-left.png" alt="">
-        </div>
+        <ul class="bottom-left">
+            <li>
+                <div class="li-img">
+                    <img src="../../assets/dui.png" alt="" />
+                </div>
+                <div class="li-desc">100% online loan</div>
+            </li>
+            <li>
+                <div class="li-img">
+                    <img src="../../assets/dui.png" alt="" />
+                </div>
+                <div class="li-desc">99% Approval</div>
+            </li>
+            <li>
+                <div class="li-img">
+                    <img src="../../assets/dui.png" alt="">
+                </div>
+
+                <div class="li-desc">No paperwork</div>
+            </li>
+        </ul>
         <div class="bottom-right">
             <div class="one">Flexible repayment</div>
             <div class="two">Borrow anytime repay anytime</div>
@@ -119,6 +166,29 @@ export default {
         position: absolute;
         left: (50/@a);
         top: (520/@a);
+
+        li {
+            display: flex;
+
+            .li-img {
+                width: (12/@a);
+                height: (12/@a);
+                margin-right: (5/@a);
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .li-desc {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+                font-size: (12/@a);
+                color: #4A4A4A;
+                margin-top: (3/@a);
+            }
+        }
     }
 
     .btn {
@@ -141,15 +211,39 @@ export default {
 
     .data {
         position: absolute;
+        display: flex;
         top: (146/@a);
         left: (40/@a);
         width: (290/@a);
         height: (53/@a);
         z-index: 9;
+        background-color: #fff;
+        border-radius: (20/@a);
 
+        .data-left {
+            margin-top: (6/@a);
+            margin-left: (40/@a);
+            margin-right: (50/@a);
+        }
 
-        img {
-            width: 100%;
+        .data-right {
+            margin-top: (6/@a);
+        }
+
+        .data-left-top {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            font-size: (14/@a);
+            color: #0D621D;
+        }
+
+        .data-left-bottom {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: (12/@a);
+            color: #0D621D;
         }
     }
 
@@ -157,6 +251,69 @@ export default {
         position: absolute;
         top: (233/@a);
         left: (35/@a);
+        width: (300/@a);
+        height: (240/@a);
+        border-radius: (20/@a);
+        background-color: #fff;
+        padding-top: (20/@a);
+
+        .t {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            font-size: (18/@a);
+            color: #444444;
+            margin-left: (90/@a);
+        }
+
+        .content {
+            display: flex;
+
+            .c-left {
+                margin-left: (20/@a);
+                margin-top: (10/@a);
+                margin-right: (50/@a);
+            }
+
+            .c-right {
+                margin-top: (10/@a);
+            }
+
+            .c-a-top {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+                font-size: (12/@a);
+                color: #535353;
+            }
+
+            .c-a-bottom {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 500;
+                font-size: (15/@a);
+                color: #179D2D;
+                margin-top: (5/@a);
+            }
+
+            .c-b-top {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+                font-size: (12/@a);
+                color: #535353;
+                margin-top: (5/@a);
+            }
+
+            .c-b-bottom {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 500;
+                font-size: (15/@a);
+                color: #535353;
+                margin-top: (5/@a);
+            }
+        }
 
     }
 

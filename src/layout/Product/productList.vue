@@ -1,6 +1,6 @@
 <template>
     <div class="productList" :class="{ a: selectIndex !== -1 }">
-        <TopDesc desc="Product List"></TopDesc>
+        <ProDesc desc="Product List"></ProDesc>
         <div class="top">
             <div class="top-left">My Loan History</div>
             <div class="top-right" @click="doView">View</div>

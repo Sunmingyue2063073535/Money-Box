@@ -83,7 +83,7 @@ export default {
         //发送验证码
         async fasong() {
             if (!this.phone) {
-                Toast('请输入手机号')
+                Toast('Please enter phone number')
                 return
             }
             const f = {
