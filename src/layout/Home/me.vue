@@ -7,7 +7,7 @@
             <div class="user-icon">
                 <img src="@/assets/user-icon-a.png" alt="">
             </div>
-            <div class="user-name">Hello User</div>
+            <div class="user-name">{{ this.$store.state.userInfo.phone }}</div>
             <div class="status">
                 <div class="success" @click="doStatus(1)">
                     <div class="status-icon">
@@ -33,7 +33,7 @@
             <div class="user-icon">
                 <img src="@/assets/user-icon.png" alt="">
             </div>
-            <div class="user-name">Please Login</div>
+            <div class="user-name">Hello User</div>
             <!-- 顶部状态 -->
             <div class="status">
                 <div class="success" @click="doStatus(1)">
@@ -112,8 +112,7 @@
             </li>
         </ul>
         <!-- 按钮 -->
-        <div class="login" v-if="!$store.state.isLogin" @click="$router.push('/login')">Login</div>
-        <div class="login" v-else @click="doLogout">Log out</div>
+        <div class="login" v-if="$store.state.isLogin" @click="doLogout">Log out</div>
         <!-- 底部导航 -->
         <div class="nav">
             <div class="nav-home" @click="$router.push('/home')">
